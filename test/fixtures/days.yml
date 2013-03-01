@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  day: MyString
+  day_no: 1
+  date: 2013-01-19
+  bf_recipe_id: 1
+  lunch_recipe_id: 1
+  dinner_recipe_id: 1
+
+two:
+  title: MyString
+  day: MyString
+  day_no: 1
+  date: 2013-01-19
+  bf_recipe_id: 1
+  lunch_recipe_id: 1
+  dinner_recipe_id: 1

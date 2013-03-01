@@ -1,0 +1,57 @@
+<h4>Current week menu</h4>
+<nav>
+    <ul class="inline-list">
+  <% if(params[:currentWeekNo] != nil) %>
+        <li><%= link_to('This Week',{:controller => 'calendar', :action => 'show_menu' }, :class => 'button tiny') %></li>
+        <li><button class="button tiny" disabled="disabled">Next Week</button></li>
+        <li><%= link_to('Create Menu',{:action => 'generate_next_week_wm'}, :class => 'button tiny') %></li>
+  <% else %>
+        <li><button class="button tiny" disabled="disabled">This Week</button></li>
+        <li><%= link_to('Next Week',{:action => 'show_menu', :currentWeekNo => @nextWeekNumber}, :class => 'button tiny') %></li>
+        <li><%= link_to('Create Menu',{:action => 'generate_current_wm'}, :class => 'button tiny') %></li>
+  <% end %>
+    </ul>
+</nav>
+<section>
+    <ul class="accordion">
+      <% @menuDays.each do |d|    %>
+          <li>
+            <div class="title">
+              <%= d.title %>
+            <%= link_to('edit', { :action=>'edit_day_recipes', :id => d.id}, :style => 'margin-right: 15px', :class => 'button tiny right') %>
+            </div>
+            <div class="content">
+              <ul class="circle">
+                <li>
+                  Breakfast:
+                  <% if d.bf_recipe != nil%>
+                      <%= link_to(d.bf_recipe.title, recipe_path(d.bf_recipe)) %>
+                  <% end %>
+                </li>
+                <li>
+                  Lunch:
+                  <% if d.lunch_recipe != nil%>
+                      <%= link_to(d.lunch_recipe.title, recipe_path(d.lunch_recipe)) %>
+                  <% end %>
+                </li>
+                <li>
+                  Dinner:
+                  <% if d.dinner_recipe != nil%>
+                      <%= link_to(d.dinner_recipe.title, recipe_path(d.dinner_recipe)) %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </li>
+      <% end            %>
+    </ul>
+</section>
+<% content_for :page_script do %>
+    <script>
+      $(document).ready(function(){
+
+      })
+
+    </script>
+<% end %>
+

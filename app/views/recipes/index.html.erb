@@ -1,0 +1,11 @@
+<h4>
+  Listing recipes
+</h4>
+<%= link_to('New Recipe', new_recipe_path, :class => 'button tiny') %>
+<ul class="circle">
+<% @recipes.each do |recipe| %>
+    <li>
+        <%= link_to(recipe.title, recipe) %>
+    </li>
+<% end %>
+</ul>

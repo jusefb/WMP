@@ -1,0 +1,22 @@
+<h4><%= @day.title %></h4>
+<%= link_to('Edit', {:action => 'edit_day_recipes', :id => params[:id]}, :class => 'button tiny' ) %>
+<ul class="circle">
+  <li>
+    Breakfast:
+    <% if @day.bf_recipe != nil%>
+        <%= link_to(@day.bf_recipe.title, recipe_path(@day.bf_recipe)) %>
+    <% end %>
+  </li>
+  <li>
+    Lunch:
+    <% if @day.lunch_recipe != nil%>
+        <%= link_to(@day.lunch_recipe.title, recipe_path(@day.lunch_recipe)) %>
+    <% end %>
+  </li>
+  <li>
+    Dinner:
+    <% if @day.dinner_recipe != nil%>
+        <%= link_to(@day.dinner_recipe.title, recipe_path(@day.dinner_recipe)) %>
+    <% end %>
+  </li>
+</ul>

@@ -1,0 +1,7 @@
+<h3>Select Ingredient:</h3>
+  <%= form_for(:recipeIngredient, :url => {:action => 'save_ingredient'}, :html => {:class => 'test-class'}) do |f| %>
+      <%= f.collection_select(:ingredientId, @ingredients, :id, :title) %>
+      <%= f.hidden_field(:recipeId, :value => params[:id]) %>
+      <br />
+       <%= submit_tag('Save') %>
+  <% end %>

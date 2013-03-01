@@ -1,0 +1,8 @@
+<h4>Select Ingredient:</h4>
+<%= form_for(:day, :url => {:action => 'save_day_recipes', :id => params[:id]}, :html => {:class => 'test-class custom'}) do |f| %>
+    <%= f.collection_select(:bf_recipe_id, @recipes, :id, :title, :prompt => true ) %>
+    <%= f.collection_select(:lunch_recipe_id, @recipes, :id, :title, :prompt => true) %>
+    <%= f.collection_select(:dinner_recipe_id, @recipes, :id, :title, :prompt => true) %>
+    <%= submit_tag('Save', :class => 'button tiny') %>
+    <%= link_to 'Back', recipes_path, :class => 'button tiny' %>
+<% end %>

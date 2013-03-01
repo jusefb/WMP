@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="columns twelve">
+    <h4><%= @recipe.title %></h4>
+    <h5>Ingredients
+    <%= link_to('+ Add', {:action => 'add_ingredient', :id => params[:id]}, :class => 'label radius tiny') %>
+    </h5>
+    <div>
+        <ul class="circle">
+          <% @recipeIngredients.each do |i| %>
+              <li><%=  @ingredients.find(i[:ingredientId]).title + '(' + i[:amount].to_s + ' ' + i[:unit].to_s + ')' %>
+                  <%=  link_to('x',{:action => 'delete_ingredient', :id => i[:ingredientId], :recipeId => params[:id]}, :class => 'label radius tiny')%>
+              </li>
+          <% end %>
+        </ul>
+    </div>
+    <h5>Description:</h5>
+    <p><%= @recipe.description %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns twelve">
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>
+  </div>
+</div>
